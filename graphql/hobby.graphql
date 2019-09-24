@@ -1,0 +1,9 @@
+extend type Query {
+    hobbies: [Hobby!]! @all
+    hobby(id: ID @eq): Hobby @find(model: "App\\Hobby")
+}
+
+type Hobby {
+    id: ID!
+    name: String!
+}
