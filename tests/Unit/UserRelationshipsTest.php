@@ -40,7 +40,7 @@ class UserRelationshipsTest extends TestCase
      *
      * @return void
      */
-    public function testUserAttachHobbyGraphql()
+    public function testHobbyAttachUserGraphql()
     {
 
         $hobbies = factory(Hobby::class, 20)->create();
@@ -77,6 +77,6 @@ class UserRelationshipsTest extends TestCase
 
         $result = $response->decodeResponseJson();
 
-        print json_encode($result);
+        // print json_encode($result);
     }
 }
