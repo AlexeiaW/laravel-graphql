@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Hobby;
 
-class testCreateHobby extends TestCase
+class CreateHobbyTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -75,7 +75,7 @@ class testCreateHobby extends TestCase
 
         $result = $response->decodeResponseJson();
 
-        print json_encode($result);
+        // print json_encode($result);
 
         $response->assertDontSee('errors');
     }

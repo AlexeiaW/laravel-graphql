@@ -6,7 +6,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class testQueryUsers extends TestCase
+class QueryUsersTest extends TestCase
 {
     /**
      * A basic feature test example.
@@ -24,7 +24,6 @@ class testQueryUsers extends TestCase
         ');
 
         $response->assertDontSee('errors');
-
     }
 
 
@@ -51,6 +50,5 @@ class testQueryUsers extends TestCase
         ');
 
         $response->assertDontSee('errors');
-
     }
 }

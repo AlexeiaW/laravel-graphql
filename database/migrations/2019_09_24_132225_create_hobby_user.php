@@ -14,7 +14,7 @@ class CreateHobbyUser extends Migration
     public function up()
     {
         Schema::create('hobby_user', function (Blueprint $table) {
-            $table->primary(['hobby_id','user_id']);
+            $table->primary(['hobby_id', 'user_id']);
             $table->unsignedInteger('hobby_id');
             $table->unsignedInteger('user_id');
 

@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\User;
 use App\Hobby;
 
-class testHobbyRelationships extends TestCase
+class UserRelationshipsTest extends TestCase
 {
     // use RefreshDatabase;
     /**
@@ -16,13 +16,13 @@ class testHobbyRelationships extends TestCase
      *
      * @return void
      */
-    public function testUserAttachHobby()
+    public function testHobbyAttachUser()
     {
 
         $user = factory(User::class)->create();
         $hobby = factory(Hobby::class)->create();
 
-        $user->hobby($hobby);
+        $hobby->user($user);
 
 
         $this->assertDatabaseHas('hobby_user', [
@@ -43,21 +43,23 @@ class testHobbyRelationships extends TestCase
     public function testUserAttachHobbyGraphql()
     {
 
-        $user = factory(User::class, 20)->create();
+        $hobbies = factory(Hobby::class, 20)->create();
 
+        $user = factory(User::class, 20)->create()->each(function ($user) {
+            $user->save();
 
-        factory(Hobby::class, 20)->create()->each(function ($hobby) {
-            $hobby->save();
-            $user = User::find(1);
-            $user->hobby($hobby);
+            $hobby = Hobby::find(1);
+            $hobby->user($user);
         });
+
+
 
         $response = $this->graphQL('
         {
-            user(id: 1) {
+            hobby(id: 1) {
                 id
                 name
-                hobbies(first: 10) {
+                users(first: 10) {
                     data {
                         id
                         name

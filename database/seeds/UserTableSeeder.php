@@ -14,6 +14,10 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         //
-        factory(User::class, 50)->create();
+        factory(User::class, 50)->create()->each(function ($user) {
+            // Associate the user with a hobby
+            $user->hobby(rand(1, 50));
+            $user->save();
+        });
     }
 }
