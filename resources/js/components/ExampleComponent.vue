@@ -6,6 +6,8 @@
                     <div class="card-header">List all hobbies</div>
 
                     <div class="card-body">
+                        <div>Your hobby: {{ hobby }}</div>
+
                         <li v-for="hobby in hobbies" :key="hobby.id">
                             {{ hobby.name }}
                         </li>
@@ -29,27 +31,17 @@ export default {
                     name
                 }
             }
-        `
+        `,
+        hobby: {
+            query: gql`
+                query {
+                    hobby(id: 1) {
+                        name
+                    }
+                }
+            `,
+            update: data => data.hobby.name
+        }
     }
 };
-
-// export default {
-// props: ["someProp"],
-// mounted() {
-//     console.log("Component mounted.");
-// },
-// data() {
-//     return {
-//         body: "Hello"
-//     };
-// },
-// apollo: {
-//     // Simple query that will update the 'hello' vue property
-//     hello: gql`
-//         query {
-//             hello
-//         }
-//     `
-// }
-// };
 </script>
