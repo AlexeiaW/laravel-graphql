@@ -7436,6 +7436,16 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/src/index.js");
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(graphql_tag__WEBPACK_IMPORTED_MODULE_0__);
+function _templateObject3() {
+  var data = _taggedTemplateLiteral(["\n                query {\n                    user(id: 1) {\n                        id\n                        name\n                        email\n                        hobbies(first: 10) {\n                            data {\n                                id\n                                name\n                            }\n                            paginatorInfo {\n                                currentPage\n                                lastPage\n                            }\n                        }\n                    }\n                }\n            "]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject2() {
   var data = _taggedTemplateLiteral(["\n                query {\n                    hobby(id: 1) {\n                        name\n                    }\n                }\n            "]);
 
@@ -7447,7 +7457,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n            query {\n                hobbies {\n                    id\n                    name\n                }\n            }\n        "]);
+  var data = _taggedTemplateLiteral(["\n                query {\n                    hobbies {\n                        id\n                        name\n                    }\n                }\n            "]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -7478,16 +7488,36 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      hobbies: [],
+      hobby: {},
+      user: {}
+    };
+  },
   apollo: {
     // Simple query that will update the 'hello' vue property
-    hobbies: graphql_tag__WEBPACK_IMPORTED_MODULE_0___default()(_templateObject()),
+    hobbies: {
+      query: graphql_tag__WEBPACK_IMPORTED_MODULE_0___default()(_templateObject())
+    },
     hobby: {
-      query: graphql_tag__WEBPACK_IMPORTED_MODULE_0___default()(_templateObject2()),
-      update: function update(data) {
-        return data.hobby.name;
-      }
+      query: graphql_tag__WEBPACK_IMPORTED_MODULE_0___default()(_templateObject2())
+    },
+    user: {
+      query: graphql_tag__WEBPACK_IMPORTED_MODULE_0___default()(_templateObject3())
     }
   }
 });
@@ -49948,7 +49978,33 @@ var render = function() {
             "div",
             { staticClass: "card-body" },
             [
-              _c("div", [_vm._v("Your hobby: " + _vm._s(_vm.hobby))]),
+              _c("div", [_vm._v("Your hobby: " + _vm._s(_vm.hobby.name))]),
+              _vm._v(" "),
+              _c(
+                "div",
+                [
+                  _c("h1", [_vm._v("User")]),
+                  _vm._v(" "),
+                  _c("div", [_vm._v(_vm._s(_vm.user.name))]),
+                  _vm._v(" "),
+                  _c("div", [_vm._v(_vm._s(_vm.user.email))]),
+                  _vm._v(" "),
+                  _c("div", [_vm._v("Users hobbies")]),
+                  _vm._v(" "),
+                  _vm._l(_vm.user.hobbies, function(hobby) {
+                    return _c("li", { key: hobby.id }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(hobby.name) +
+                          "\n                        "
+                      )
+                    ])
+                  })
+                ],
+                2
+              ),
+              _vm._v(" "),
+              _c("h1", [_vm._v("All hobbies")]),
               _vm._v(" "),
               _vm._l(_vm.hobbies, function(hobby) {
                 return _c("li", { key: hobby.id }, [
