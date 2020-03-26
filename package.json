@@ -24,5 +24,10 @@
         "sass-loader": "^8.0.2",
         "vue": "^2.6.11",
         "vue-template-compiler": "^2.6.11"
+    },
+    "dependencies": {
+        "apollo-boost": "^0.4.7",
+        "graphql": "^14.6.0",
+        "vue-apollo": "^3.0.3"
     }
 }

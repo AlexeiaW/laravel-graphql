@@ -3,10 +3,12 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Example Component</div>
+                    <div class="card-header">List all hobbies</div>
 
                     <div class="card-body">
-                        I'm an example component.
+                        <li v-for="hobby in hobbies" :key="hobby.id">
+                            {{ hobby.name }}
+                        </li>
                     </div>
                 </div>
             </div>
@@ -15,9 +17,39 @@
 </template>
 
 <script>
-    export default {
-        mounted() {
-            console.log('Component mounted.')
-        }
+import gql from "graphql-tag";
+
+export default {
+    apollo: {
+        // Simple query that will update the 'hello' vue property
+        hobbies: gql`
+            query {
+                hobbies {
+                    id
+                    name
+                }
+            }
+        `
     }
+};
+
+// export default {
+// props: ["someProp"],
+// mounted() {
+//     console.log("Component mounted.");
+// },
+// data() {
+//     return {
+//         body: "Hello"
+//     };
+// },
+// apollo: {
+//     // Simple query that will update the 'hello' vue property
+//     hello: gql`
+//         query {
+//             hello
+//         }
+//     `
+// }
+// };
 </script>

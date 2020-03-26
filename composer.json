@@ -12,7 +12,7 @@
         "fideloper/proxy": "^4.3.0",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.3.0",
-        "mll-lab/laravel-graphql-playground": "^2.1.0",
+        "mll-lab/laravel-graphql-playground": "^2.1",
         "nuwave/lighthouse": "^4.10.2"
     },
     "require-dev": {
